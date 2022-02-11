@@ -1,11 +1,25 @@
 {
+  "name": "climate-science-olympiad",
+  "version": "0.0.1",
+  "description": "NextJS Version of Climate science olympiad",
+  "main": "index.js",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && rm -rf .next/ && yarn && yarn dev"
   },
+  
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+
+  "author": "GBear",
+  "license": "MIT",
+
   "dependencies": {
     "next": "^12.0.8",
     "react": "17.0.2",
