@@ -57,6 +57,7 @@ export default function CustomDropdown(props) {
     rtlActive,
     noLiPadding,
     navDropdown,
+    flagUrl,
   } = props;
   const caretClasses = classNames({
     [classes.caret]: true,
@@ -91,6 +92,11 @@ export default function CustomDropdown(props) {
           {...buttonProps}
           onClick={handleClick}
         >
+          <img
+              src={flagUrl}
+              alt={flagUrl}
+              style={{width: '20px', height:'20px', borderRadius:'10px', marginRight:"5px"}}
+          />
           {icon}
           {buttonText !== undefined ? buttonText : null}
           {caret ? <b className={caretClasses} /> : null}
@@ -195,4 +201,5 @@ CustomDropdown.propTypes = {
   navDropdown: PropTypes.bool,
   // function that retuns the selected item
   onClick: PropTypes.func,
+  flagUrl: PropTypes.string
 };

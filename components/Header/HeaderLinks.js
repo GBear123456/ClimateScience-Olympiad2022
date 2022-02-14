@@ -26,7 +26,7 @@ export default function HeaderLinks(props) {
   const classes = useStyles();
   return (
     <List className={classes.list}>
-      <ListItem className={classes.listItem}>
+      {/* <ListItem className={classes.listItem}>
         <CustomDropdown
           noLiPadding
           navDropdown
@@ -49,15 +49,15 @@ export default function HeaderLinks(props) {
             </a>,
           ]}
         />
-      </ListItem>
+      </ListItem> */}
       <ListItem className={classes.listItem}>
         <Button
           href="https://www.creative-tim.com/product/nextjs-material-kit-pro?ref=njsmk-navbar"
           color="transparent"
           target="_blank"
-          className={classes.navLink}
+          className={classes.linkTitle}
+          style={{textTransform: 'capitalize'}}
         >
-          <Icon className={classes.icons}>unarchive</Icon> 
           ClimateScience
         </Button>
       </ListItem>
@@ -66,20 +66,28 @@ export default function HeaderLinks(props) {
           href="https://www.creative-tim.com/product/nextjs-material-kit-pro?ref=njsmk-navbar"
           color="transparent"
           target="_blank"
-          className={classes.navLink}
+          className={classes.linkTitle}
+          style={{textTransform: 'capitalize'}}
         >
-          <Icon className={classes.icons}>unarchive</Icon> 
           Home
         </Button>
+      </ListItem>
+      <ListItem className={classes.listItem} style={{marginTop: '-14px'}}>
+          <img
+            src="/img/images/cs_logo.png"
+            alt="..."
+            className={classes.imgRounded + " " + classes.imgFluid}
+          />
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button
           href="https://www.creative-tim.com/product/nextjs-material-kit-pro?ref=njsmk-navbar"
           color="transparent"
           target="_blank"
-          className={classes.navLink}
+          className={classes.linkTitle}
+          style={{textTransform: 'capitalize'}}
         >
-          <Icon className={classes.icons}>unarchive</Icon> 
+          {/* <Icon className={classes.icons}>unarchive</Icon>  */}
           Team
         </Button>
       </ListItem>
@@ -88,66 +96,12 @@ export default function HeaderLinks(props) {
           href="https://www.creative-tim.com/product/nextjs-material-kit?ref=njsmk-navbar"
           color="transparent"
           target="_blank"
-          className={classes.navLink}
+          className={classes.linkTitle}
+          style={{textTransform: 'capitalize'}}
         >
-          <CloudDownload className={classes.icons} /> 2021 Winners
+          {/* <CloudDownload className={classes.icons} />  */}
+          2021 Winners
         </Button>
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        {/*<Tooltip title="Delete">
-          <IconButton aria-label="Delete">
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>*/}
-        <Tooltip
-          id="instagram-twitter"
-          title="Follow us on twitter"
-          placement={"top"}
-          classes={{ tooltip: classes.tooltip }}
-        >
-          <Button
-            href="https://twitter.com/CreativeTim?ref=creativetim"
-            target="_blank"
-            color="transparent"
-            className={classes.navLink}
-          >
-            <i className={classes.socialIcons + " fab fa-twitter"} />
-          </Button>
-        </Tooltip>
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <Tooltip
-          id="instagram-facebook"
-          title="Follow us on facebook"
-          placement={"top"}
-          classes={{ tooltip: classes.tooltip }}
-        >
-          <Button
-            color="transparent"
-            href="https://www.facebook.com/CreativeTim?ref=creativetim"
-            target="_blank"
-            className={classes.navLink}
-          >
-            <i className={classes.socialIcons + " fab fa-facebook"} />
-          </Button>
-        </Tooltip>
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <Tooltip
-          id="instagram-tooltip"
-          title="Follow us on instagram"
-          placement={"top"}
-          classes={{ tooltip: classes.tooltip }}
-        >
-          <Button
-            color="transparent"
-            href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
-            target="_blank"
-            className={classes.navLink}
-          >
-            <i className={classes.socialIcons + " fab fa-instagram"} />
-          </Button>
-        </Tooltip>
       </ListItem>
       <ListItem className={classes.listItem}>
         <CustomDropdown
@@ -158,7 +112,8 @@ export default function HeaderLinks(props) {
             className: classes.navLink,
             color: "transparent",
           }}
-          buttonIcon={Apps}
+          buttonIcon={0}
+          flagUrl={"img/country/en.png"}
           dropdownList={[
             <Link href="/components">
               <a className={classes.dropdownLink}>English</a>

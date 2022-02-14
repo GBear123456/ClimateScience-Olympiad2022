@@ -20,6 +20,7 @@ const headerLinksStyle = (theme) => ({
     display: "block",
     width: "auto",
     margin: "0",
+    marginRight: '20px',
     padding: "0",
     [theme.breakpoints.down("sm")]: {
       width: "100%",
@@ -119,6 +120,22 @@ const headerLinksStyle = (theme) => ({
   ...tooltip,
   marginRight5: {
     marginRight: "5px",
+  },
+
+  linkTitle: {
+    ...defaultFont,
+    lineHeight: "30px",
+    fontSize: "16px",
+    borderRadius: "3px",
+    textTransform: "none",
+    fontWeight:'bold',
+    color: "inherit",
+    padding: "8px 20px",
+    letterSpacing: "unset",
+    "&:hover,&:focus": {
+      color: "inherit",
+      background: "transparent",
+    },
   },
 });
 
