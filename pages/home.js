@@ -15,7 +15,7 @@ import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
 import Parallax from "components/Parallax/Parallax.js";
 // sections for this page
-import SectionBasics from "pages-sections/Components-Sections/SectionBasics.js";
+//import SectionBasics from "pages-sections/Components-Sections/SectionBasics.js";
 import SectionNavbars from "pages-sections/Components-Sections/SectionNavbars.js";
 import SectionTabs from "pages-sections/Components-Sections/SectionTabs.js";
 import SectionPills from "pages-sections/Components-Sections/SectionPills.js";
@@ -27,6 +27,8 @@ import SectionCompletedExamples from "pages-sections/Components-Sections/Section
 import SectionLogin from "pages-sections/Components-Sections/SectionLogin.js";
 import SectionExamples from "pages-sections/Components-Sections/SectionExamples.js";
 import SectionDownload from "pages-sections/Components-Sections/SectionDownload.js";
+
+import FindingSolutionSection from "pages-sections/home-sections/FindingSolution-Section.js";
 
 import styles from "styles/jss/nextjs-material-kit/pages/components.js";
 
@@ -84,8 +86,9 @@ export default function Components(props) {
         </div>
       </Parallax>
 
-      <div className={classNames(classes.main, classes.mainRaised)}>
-        <SectionBasics />
+      <div className={classNames(classes.main)}>
+        {/* <SectionBasics /> */}
+        <FindingSolutionSection />
         <SectionNavbars />
         <SectionTabs />
         <SectionPills />
