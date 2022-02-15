@@ -33,6 +33,10 @@ import FindingSolutionSection from "pages-sections/home-sections/FindingSolution
 import styles from "styles/jss/nextjs-material-kit/pages/components.js";
 
 import Favorite from "@material-ui/icons/Favorite";
+import RegisterSection from "../pages-sections/home-sections/Register-Section";
+import BlueSection from "../pages-sections/home-sections/BlueSection";
+import CSOTeamSection from "../pages-sections/home-sections/CSOTeamSection";
+import PartnersSection from "../pages-sections/home-sections/PartnersSection";
 
 const useStyles = makeStyles(styles);
 export default function Components(props) {
@@ -89,11 +93,15 @@ export default function Components(props) {
       <div className={classNames(classes.main)}>
         {/* <SectionBasics /> */}
         <FindingSolutionSection />
-        <SectionNavbars />
-        <SectionTabs />
-        <SectionPills />
-        <SectionNotifications />
-        <SectionTypography />
+        <RegisterSection />
+        <BlueSection />
+        {/* <SectionNavbars /> */}
+        {/* <SectionTabs /> */}
+        {/* <SectionPills /> */}
+        {/* <SectionNotifications /> */}
+        <CSOTeamSection />
+        <PartnersSection />
+        {/* <SectionTypography /> */}
         <SectionJavascript />
         <SectionCarousel />
         <SectionCompletedExamples />
