@@ -33,14 +33,44 @@ import FindingSolutionSection from "pages-sections/home-sections/FindingSolution
 import styles from "styles/jss/nextjs-material-kit/pages/components.js";
 
 import Favorite from "@material-ui/icons/Favorite";
+import useFirestore from "../hooks/useFilestore.js"
 
 const useStyles = makeStyles(styles);
 export default function Components(props) {
   const classes = useStyles();
   const { ...rest } = props;
+  const {docs} = useFirestore("test_problems");
+  const { questions, setQuestions } = useState([]);
+
   useEffect((props) => {
-    console.log("CLASSES=>", props)
-  }, [])
+    console.log("CLASSES=>", props);
+
+  }, []);
+
+  useEffect(() => {
+    //console.log("GBear: problems ", docs.length);
+    if (docs.length >= 3) {
+
+      const tmp_questions = getRandom(docs, 3); // take random 3 elements in docs array...
+      console.log("GBear: problems ", tmp_questions);
+      //setQuestions(tmp_questions);
+    } 
+  }, [docs]);
+
+  function getRandom(arr, n) {
+    var result = new Array(n),
+        len = arr.length,
+        taken = new Array(len);
+    if (n > len)
+        throw new RangeError("getRandom: more elements taken than available");
+    while (n--) {
+        var x = Math.floor(Math.random() * len);
+        result[n] = arr[x in taken ? taken[x] : x];
+        taken[x] = --len in taken ? taken[len] : len;
+    }
+    return result;
+}
+
   return (
     <div>
       <Header
