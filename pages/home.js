@@ -33,14 +33,11 @@ import FindingSolutionSection from "pages-sections/home-sections/FindingSolution
 import styles from "styles/jss/nextjs-material-kit/pages/components.js";
 
 import Favorite from "@material-ui/icons/Favorite";
-<<<<<<< HEAD
-import useFirestore from "../hooks/useFilestore.js"
-=======
+import { useFirestore, useSetFirestore } from "../hooks/useFilestore.ts"
 import RegisterSection from "../pages-sections/home-sections/Register-Section";
 import BlueSection from "../pages-sections/home-sections/BlueSection";
 import CSOTeamSection from "../pages-sections/home-sections/CSOTeamSection";
 import PartnersSection from "../pages-sections/home-sections/PartnersSection";
->>>>>>> dadb184b9df8f513317a21a79f6e7e17fb35af35
 
 const useStyles = makeStyles(styles);
 export default function Components(props) {
@@ -51,7 +48,30 @@ export default function Components(props) {
 
   useEffect((props) => {
     console.log("CLASSES=>", props);
-
+    // test code for batch upload data to the firebase... 
+    /*const tmp_docs = [
+      {
+        _id: 0,
+        content: "000"
+      },
+      {
+        _id: 1,
+        content: "111"
+      },
+      {
+        _id: 2,
+        content: "222"
+      },
+      {
+        _id: 3,
+        content: "333"
+      },
+      {
+        _id: 4,
+        content: "444"
+      },
+    ]
+    useSetFirestore("test_data", tmp_docs);*/
   }, []);
 
   useEffect(() => {
