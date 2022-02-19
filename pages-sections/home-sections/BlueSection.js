@@ -47,7 +47,7 @@ export default function BlueSection() {
                     marginRight:'auto', marginLeft:'auto', display:'block', color:"#6231ec" }}>
                 {"Meet the CSO21 Winners >"}
             </Button>
-            </div>
+        </div>
       </div>
     </div>
   );
