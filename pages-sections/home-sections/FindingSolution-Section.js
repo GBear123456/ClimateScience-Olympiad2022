@@ -31,9 +31,9 @@ import styles from "styles/jss/nextjs-material-kit/pages/componentsSections/basi
 
 const useStyles = makeStyles(styles);
 
-export default function FindingSolutionSection() {
+export default function FindingSolutionSection(props) {
   const classes = useStyles();
-  const [checked, setChecked] = React.useState([24, 22]);
+  const [checked, setChecked] = React.useState([]);
   const [selectedEnabled, setSelectedEnabled] = React.useState("b");
   const [checkedA, setCheckedA] = React.useState(false);
   const [checkedB, setCheckedB] = React.useState(false);
@@ -43,9 +43,14 @@ export default function FindingSolutionSection() {
   const [fadeC, setFadeC] = React.useState(false);
   const [electric, setElectric] = React.useState('');
 
+  const [questions, setQuestions] = React.useState(props.questions)
+
   React.useEffect(() => {
 
     window.addEventListener("scroll", onScroll);
+
+    console.log("PROPS =>", props)
+    setQuestions(props.questions);
 
     setTimeout(() => {
         setCheckedA(true);
@@ -111,11 +116,11 @@ export default function FindingSolutionSection() {
   }
 
   const onScroll = () => {
-    let electric_group_off_height = document.querySelector("#electric_group").offsetHeight;
-    if ( window.scrollY  > electric_group_off_height )
-    {
-      setFadeA(false);
-    }
+    // let electric_group_off_height = document.querySelector("#electric_group").offsetHeight;
+    // if ( window.scrollY  > electric_group_off_height )
+    // {
+    //   setFadeA(false);
+    // }
   }
 
   const handleToggle = (value) => {
@@ -255,7 +260,24 @@ export default function FindingSolutionSection() {
               </div>
               <Fade in={fadeA} timeout={300}>
                 <div>
-                  <Slide in={checkedA} direction={"up"}>
+                  {
+                    questions !== undefined && 
+                    questions.map((question, index) => {
+                      return (
+                        <Slide in={index === 0 
+                                  ? checkedA 
+                                  : index === 1 ? checkedB : checkedC}
+                          direction={"up"} key={"slide" + index}>
+                          <label className={classNames(classes.title, classes.mainRaised, classes.radioButton, "c-radio")}>
+                            <input type="radio" name="electric" value={index+1} checked={electric === `${index+1}`}  onChange={onRadioValueChange}/>
+                            <span className="fa fa-circle" style={{borderColor:'#6231ec'}}/>
+                              {question.content}
+                          </label>
+                        </Slide>
+                      )
+                    })
+                  }
+                  {/* <Slide in={checkedA} direction={"up"}>
                     <label className={classNames(classes.title, classes.mainRaised, classes.radioButton, "c-radio")}>
                       <input type="radio" name="electric" value={"1"} checked={electric === "1"}  onChange={onRadioValueChange}/>
                       <span className="fa fa-circle" style={{borderColor:'#6231ec'}}/>
@@ -275,7 +297,7 @@ export default function FindingSolutionSection() {
                       <span className="fa fa-circle" style={{borderColor:'#6231ec'}}/>
                         {"Electricity is a primary energy source"}
                     </label>
-                  </Slide>
+                  </Slide> */}
                 </div>
               </Fade>
             </GridItem>

@@ -44,34 +44,10 @@ export default function Components(props) {
   const classes = useStyles();
   const { ...rest } = props;
   const {docs} = useFirestore("test_problems");
-  const { questions, setQuestions } = useState([]);
+  const [questions, setQuestions] = useState([]);
 
   useEffect((props) => {
     console.log("CLASSES=>", props);
-    // test code for batch upload data to the firebase... 
-    /*const tmp_docs = [
-      {
-        _id: 0,
-        content: "000"
-      },
-      {
-        _id: 1,
-        content: "111"
-      },
-      {
-        _id: 2,
-        content: "222"
-      },
-      {
-        _id: 3,
-        content: "333"
-      },
-      {
-        _id: 4,
-        content: "444"
-      },
-    ]
-    useSetFirestore("test_data", tmp_docs);*/
   }, []);
 
   useEffect(() => {
@@ -80,7 +56,7 @@ export default function Components(props) {
 
       const tmp_questions = getRandom(docs, 3); // take random 3 elements in docs array...
       console.log("GBear: problems ", tmp_questions);
-      //setQuestions(tmp_questions);
+      setQuestions(tmp_questions);
     } 
   }, [docs]);
 
@@ -145,7 +121,7 @@ export default function Components(props) {
 
       <div className={classNames(classes.main)}>
         {/* <SectionBasics /> */}
-        <FindingSolutionSection />
+        <FindingSolutionSection questions={questions}/>
         <RegisterSection />
         <BlueSection />
         {/* <SectionNavbars /> */}
