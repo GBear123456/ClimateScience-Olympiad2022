@@ -30,6 +30,18 @@ const basicsStyle = {
       marginRight: "10px",
     },
   },
+  radioButton: {
+    padding:'5px 40px', 
+    border:'10px solid', 
+    borderRadius: '80px', 
+    borderColor:'rgba(98, 49, 236, 0.02)',
+    display: 'flex', 
+    flexDirection: 'row', 
+    alignItems:'center',
+    color: '#6231ec',
+    fontSize: '18px'
+  },
+
   navLink: {
     color: "#6231ec",
     position: "relative",

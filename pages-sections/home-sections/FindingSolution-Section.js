@@ -1,6 +1,4 @@
-import React from "react";
-// plugin that creates slider
-import Slider from "nouislider";
+import React, { useEffect } from "react";
 import classNames from "classnames";
 import Link from "next/link";
 // @material-ui/core components
@@ -10,6 +8,9 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Radio from "@material-ui/core/Radio";
 import Switch from "@material-ui/core/Switch";
+import { Slide } from "@material-ui/core";
+
+import Fade from "@material-ui/core/Fade";
 // @material-ui/icons
 import Favorite from "@material-ui/icons/Favorite";
 import People from "@material-ui/icons/People";
@@ -34,11 +35,89 @@ export default function FindingSolutionSection() {
   const classes = useStyles();
   const [checked, setChecked] = React.useState([24, 22]);
   const [selectedEnabled, setSelectedEnabled] = React.useState("b");
-  const [checkedA, setCheckedA] = React.useState(true);
+  const [checkedA, setCheckedA] = React.useState(false);
   const [checkedB, setCheckedB] = React.useState(false);
+  const [checkedC, setCheckedC] = React.useState(false);
+  const [fadeA, setFadeA] = React.useState(true);
+  const [fadeB, setFadeB] = React.useState(false);
+  const [fadeC, setFadeC] = React.useState(false);
+  const [electric, setElectric] = React.useState('');
+
   React.useEffect(() => {
-    
-  });
+
+    window.addEventListener("scroll", onScroll);
+
+    setTimeout(() => {
+        setCheckedA(true);
+        setFadeA(true);
+    }, 300)
+  }, []);
+
+
+  React.useEffect(() => {
+    if(checkedB && checkedC)
+    {
+      return
+    }
+
+    //setCheckedA(true);
+
+    setTimeout(() => {
+      if(checkedA)
+      {
+        setCheckedB(true);
+      }
+
+      if(checkedB)
+      {
+        setCheckedC(true);
+      }
+    }, 300)
+
+  }, [checkedA, checkedB, checkedC]);
+
+  useEffect(() => {
+    if(electric !== "")
+    {
+      setTimeout(() => {
+        setFadeA(false);
+        setCheckedA(false);
+        setCheckedB(false);
+        setCheckedC(false);
+        setElectric("")
+      }, 100)
+    }
+  }, [electric])
+
+  React.useEffect(() => {
+    if(fadeA)
+    {
+      return;
+    }
+    setTimeout(() => {
+        setCheckedA(true);
+        setFadeA(true);
+    }, 300)
+  }, [fadeA]);
+
+  const onRadioValueChange = (e) => {
+    const input = e.target
+    const value = input.value;
+    if(input.name == "electric")
+    {
+      console.log("RadioChecked=>", input)
+      setElectric(value);
+    }
+  }
+
+  const onScroll = () => {
+    let electric_group_off_height = document.querySelector("#electric_group").offsetHeight;
+    if ( window.scrollY  > electric_group_off_height )
+    {
+      setFadeA(false);
+    }
+  }
+
   const handleToggle = (value) => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
@@ -166,7 +245,7 @@ export default function FindingSolutionSection() {
                   {"Participate now >"}
               </Button>
             </GridItem>
-            <GridItem xs={12} sm={6} md={6} justify="center" 
+            <GridItem xs={12} sm={6} md={6} justify="center" id="electric_group"
               className={classNames(classes.title, classes.mainRaised)}
               style={{padding:'5px 40px', border:'10px solid', borderRadius: '80px', borderColor:'rgba(98, 49, 236, 0.05)'}}>
               <div className={classes.title} justify='center'>
@@ -174,33 +253,31 @@ export default function FindingSolutionSection() {
                       Which of the below statements <br/> about electricity is not true?
                   </h3>
               </div>
-              <div className={classNames(classes.title, classes.mainRaised)}
-                  style={{padding:'5px 40px', border:'10px solid', borderRadius: '80px', borderColor:'rgba(98, 49, 236, 0.02)',
-                    display: 'flex', flexDirection: 'row', alignItems:'center'}}
-                    justify="center">
-                  <div style={{border: '3px solid #6231ec', borderRadius: '30px', width: '30px', height: '30px', minWidth:'30px'}}></div>
-                  <div style={{color:'#6231ec', textAlign:'left', fontSize:'18px', fontWeight:'bold', marginLeft:'20px', padding:'0px'}}>
-                    {"Electricity is measured in units called watts"}
-                  </div>
-              </div>
-              <div className={classNames(classes.title, classes.mainRaised)}
-                  style={{padding:'5px 40px', border:'10px solid', borderRadius: '80px', borderColor:'rgba(98, 49, 236, 0.02)',
-                    display: 'flex', flexDirection: 'row', alignItems:'center'}}
-                    justify="center">
-                  <div style={{border: '3px solid #6231ec', borderRadius: '30px', width: '30px', height: '30px', minWidth:'30px'}}></div>
-                  <div style={{color:'#6231ec', textAlign:'left', fontSize:'18px', fontWeight:'bold', marginLeft:'20px', padding:'0px'}}>
-                    {"Electricity flows at the speed of light"}
-                  </div>
-              </div>
-              <div className={classNames(classes.title, classes.mainRaised)}
-                  style={{padding:'5px 40px', border:'10px solid', borderRadius: '80px', borderColor:'rgba(98, 49, 236, 0.02)',
-                    display: 'flex', flexDirection: 'row', alignItems:'center'}}
-                    justify="center">
-                  <div style={{border: '3px solid #6231ec', borderRadius: '30px', width: '30px', height: '30px', minWidth:'30px'}}></div>
-                  <div style={{color:'#6231ec', textAlign:'left', fontSize:'18px', fontWeight:'bold', marginLeft:'20px', padding:'0px'}}>
-                    {"Electricity is a primary energy source"}
-                  </div>
-              </div>
+              <Fade in={fadeA} timeout={300}>
+                <div>
+                  <Slide in={checkedA} direction={"up"}>
+                    <label className={classNames(classes.title, classes.mainRaised, classes.radioButton, "c-radio")}>
+                      <input type="radio" name="electric" value={"1"} checked={electric === "1"}  onChange={onRadioValueChange}/>
+                      <span className="fa fa-circle" style={{borderColor:'#6231ec'}}/>
+                        {"Electricity is measured in units called watts"}
+                    </label>
+                  </Slide>
+                  <Slide in={checkedB} direction={"up"}>
+                    <label className={classNames(classes.title, classes.mainRaised, classes.radioButton, "c-radio")}>
+                      <input type="radio" name="electric" value={"2"} checked={electric === "2"}  onChange={onRadioValueChange}/>
+                      <span className="fa fa-circle" style={{borderColor:'#6231ec'}}/>
+                        {"Electricity flows at the speed of light"}
+                    </label>
+                  </Slide>
+                  <Slide in={checkedC} direction={"up"}>
+                    <label className={classNames(classes.title, classes.mainRaised, classes.radioButton, "c-radio")}>
+                      <input type="radio" name="electric" value={"3"} checked={electric === "3"} onChange={onRadioValueChange}/>
+                      <span className="fa fa-circle" style={{borderColor:'#6231ec'}}/>
+                        {"Electricity is a primary energy source"}
+                    </label>
+                  </Slide>
+                </div>
+              </Fade>
             </GridItem>
           </GridContainer>
           <GridContainer justify="center">
