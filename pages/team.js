@@ -14,66 +14,24 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
 import Parallax from "components/Parallax/Parallax.js";
-// sections for this page
-//import SectionBasics from "pages-sections/Components-Sections/SectionBasics.js";
-import SectionNavbars from "pages-sections/Components-Sections/SectionNavbars.js";
-import SectionTabs from "pages-sections/Components-Sections/SectionTabs.js";
-import SectionPills from "pages-sections/Components-Sections/SectionPills.js";
-import SectionNotifications from "pages-sections/Components-Sections/SectionNotifications.js";
-import SectionTypography from "pages-sections/Components-Sections/SectionTypography.js";
-import SectionJavascript from "pages-sections/Components-Sections/SectionJavascript.js";
-import SectionCarousel from "pages-sections/Components-Sections/SectionCarousel.js";
-import SectionCompletedExamples from "pages-sections/Components-Sections/SectionCompletedExamples.js";
-import SectionLogin from "pages-sections/Components-Sections/SectionLogin.js";
-import SectionExamples from "pages-sections/Components-Sections/SectionExamples.js";
-import SectionDownload from "pages-sections/Components-Sections/SectionDownload.js";
-
 import FindingSolutionSection from "pages-sections/home-sections/FindingSolution-Section.js";
 
 import styles from "styles/jss/nextjs-material-kit/pages/components.js";
-
-import Favorite from "@material-ui/icons/Favorite";
-import { useFirestore, useSetFirestore } from "../hooks/useFilestore.ts"
 import RegisterSection from "../pages-sections/home-sections/Register-Section";
 import BlueSection from "../pages-sections/home-sections/BlueSection";
 import CSOTeamSection from "../pages-sections/home-sections/CSOTeamSection";
 import PartnersSection from "../pages-sections/home-sections/PartnersSection";
+import JudgesSection from "../pages-sections/team-sections/JudgesSection";
 import FollowsUpSection from "../pages-sections/FollowsUpSection";
 
 const useStyles = makeStyles(styles);
 export default function Components(props) {
   const classes = useStyles();
   const { ...rest } = props;
-  const {docs} = useFirestore("test_problems");
-  const [questions, setQuestions] = useState([]);
 
   useEffect((props) => {
     console.log("CLASSES=>", props);
   }, []);
-
-  useEffect(() => {
-    //console.log("GBear: problems ", docs.length);
-    if (docs.length >= 3) {
-
-      const tmp_questions = getRandom(docs, 3); // take random 3 elements in docs array...
-      console.log("GBear: problems ", tmp_questions);
-      setQuestions(tmp_questions);
-    } 
-  }, [docs]);
-
-  function getRandom(arr, n) {
-    var result = new Array(n),
-        len = arr.length,
-        taken = new Array(len);
-    if (n > len)
-        throw new RangeError("getRandom: more elements taken than available");
-    while (n--) {
-        var x = Math.floor(Math.random() * len);
-        result[n] = arr[x in taken ? taken[x] : x];
-        taken[x] = --len in taken ? taken[len] : len;
-    }
-    return result;
-}
 
   return (
     <div>
@@ -88,7 +46,7 @@ export default function Components(props) {
         }}
         {...rest}
       />
-      <Parallax image="/img/images/First.png" style={{marginTop:'70px'}}>
+      <Parallax image="/img/images/team.png" style={{marginTop:'70px'}}>
         <div className={classes.container}>
           <GridContainer>
             <GridItem>
@@ -101,10 +59,9 @@ export default function Components(props) {
                         {"$15.000 PRIZE POOL"}
                     </h6>
                   </div>
-                <h1 className={classes.title}>{'ClimateScience'} <br/> {'Olympiad 2022'}</h1>
+                <h1 className={classes.title}>{'Meet the team'}</h1>
                 <br/>
-                <br/>
-                <br/>
+                <h4 className={classes.subtitle}>{"The CSO team comprises of passionate volunteers and judges from all around the world."}</h4>
                 <br/>
                 <Button color="purple2" round style={{background:"#6231ec", fontWeight:'bold', textTransform:'capitalize', fontSize:'18px'}}>
                   {"Participate now >"}
@@ -121,34 +78,39 @@ export default function Components(props) {
       </Parallax>
 
       <div className={classNames(classes.main)}>
-        {/* <SectionBasics /> */}
-        <FindingSolutionSection questions={questions}/>
-        <RegisterSection />
-        <BlueSection />
-        {/* <SectionNavbars /> */}
-        {/* <SectionTabs /> */}
-        {/* <SectionPills /> */}
-        {/* <SectionNotifications /> */}
-        <CSOTeamSection />
-        <PartnersSection />
+        <JudgesSection  
+          backColor = {"#6231ec"}
+          title={"CSO2022 Finals Judges"} 
+          subTitle={"Our judges are trusted members of the climate science industry."} 
+          linkText={"Apply here."}
+          isApply={false} 
+          applyTitle={""} 
+          applyDesc={""} 
+          applyBtnText={""} 
+          memberCount={8}
+        />
+        <JudgesSection  
+          backColor = {"white"}
+          title={"CSO22 Pre-final Judges"} 
+          subTitle={"Our internal team of experts judge the rounds before the finals"} 
+          isApply={true} 
+          applyTitle={"Apply to become a judge"} 
+          applyDesc={"We’re looking for industry professionals to judge the ClimateScience Olympiad 2022 proposals. If you would like to apply, please fill out our form to register your interest."} 
+          applyBtnText={"Apply to become a judge >"} 
+          memberCount={8}
+        />
+        <JudgesSection  
+          backColor = {"white"}
+          title={"The ClimateScience Olympiad team"} 
+          subTitle={"Our internal team of experts judge the rounds before the finals"} 
+          isApply={false} 
+          applyTitle={""} 
+          applyDesc={""} 
+          applyBtnText={""} 
+          memberCount={16}
+        />
         <FollowsUpSection />
-        {/* <SectionTypography /> */}
-        {/* <SectionJavascript />
-        <SectionCarousel />
-        <SectionCompletedExamples />
-        <SectionLogin />
-        <GridItem md={12} className={classes.textCenter}>
-          <Link href="/login">
-            <a className={classes.link}>
-              <Button color="primary" size="lg" simple>
-                View Login Page
-              </Button>
-            </a>
-          </Link>
-        </GridItem>
-        <SectionExamples />
-        <SectionDownload /> */}
-        </div>
+      </div>
       <Footer />
     </div>
   );

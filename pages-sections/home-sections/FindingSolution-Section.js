@@ -46,16 +46,25 @@ export default function FindingSolutionSection(props) {
   const [questions, setQuestions] = React.useState(props.questions)
 
   React.useEffect(() => {
+    console.log("PROPS2 =>", props)
+    setQuestions(props.questions);
+    if(props.questions && props.questions.length > 0)
+    {
+      setTimeout(() => {
+        setCheckedA(true);
+        setFadeA(true);
+      }, 300)
+    }
+  }, [props]);
+
+  React.useEffect(() => {
 
     window.addEventListener("scroll", onScroll);
 
-    console.log("PROPS =>", props)
-    setQuestions(props.questions);
+    console.log("PROPS1 =>", props)
+    // setQuestions(props.questions);
 
-    setTimeout(() => {
-        setCheckedA(true);
-        setFadeA(true);
-    }, 300)
+
   }, []);
 
 
@@ -142,7 +151,7 @@ export default function FindingSolutionSection(props) {
           <h4 style={{textAlign:'center'}}>
             The ClimateScience Olympiad is a global problem-solving competition that encourages and empowers young people to find solutions to the effects and causes of climate change. 
           </h4>
-          <ReactPlayer url="https://www.youtube.com/watch?v=aqz-KE-bpKQ" 
+          <ReactPlayer url="https://www.youtube.com/watch?v=eSAar0cCaTA" 
             controls={true}
             width='100%'
             height="500px"

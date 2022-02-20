@@ -40,23 +40,23 @@ const BtnGroup = (props) => {
 const BtnRow = (classes) =>{
     return (
         <GridContainer justify="center" style={{paddingBottom:'30px'}}>
-            <GridItem xs={12} sm={12} md={3}>
-                <Button className={classes.marginAuto} style={{display:'block', width:'180px', height:'50px'}}>
+            <GridItem xs={12} sm={6} md={3} justify="center">
+                <Button className={classes.marginAuto} style={{display:'block', width:'180px', height:'50px', marginLeft:'auto', marginRight:'auto'}}>
                     Partner logo
                 </Button>
             </GridItem>
-            <GridItem xs={12} sm={12} md={3}>
-                <Button className={classes.marginAuto} style={{display:'block', width:'180px', height:'50px'}}>
+            <GridItem xs={12} sm={6} md={3}>
+                <Button className={classes.marginAuto} style={{display:'block', width:'180px', height:'50px', marginLeft:'auto', marginRight:'auto'}}>
                     Partner logo
                 </Button>
             </GridItem>
-            <GridItem xs={12} sm={12} md={3}>
-                <Button className={classes.marginAuto} style={{display:'block', width:'180px', height:'50px'}}>
+            <GridItem xs={12} sm={6} md={3}>
+                <Button className={classes.marginAuto} style={{display:'block', width:'180px', height:'50px', marginLeft:'auto', marginRight:'auto'}}>
                     Partner logo
                 </Button>
             </GridItem>
-            <GridItem xs={12} sm={12} md={3}>
-                <Button className={classes.marginAuto} style={{display:'block', width:'180px', height:'50px'}}>
+            <GridItem xs={12} sm={6} md={3}>
+                <Button className={classes.marginAuto} style={{display:'block', width:'180px', height:'50px', marginLeft:'auto', marginRight:'auto'}}>
                     Partner logo
                 </Button>
             </GridItem>
@@ -119,33 +119,12 @@ export default function PartnersSection() {
                 <Button round style={{background:"#6231ec", fontWeight:'bold', textTransform:'none', fontSize:'18px',
                         marginRight:'auto', marginLeft:'auto', display:'block', color:"white" }}
                         onClick={(e)=> onViewChanged(e) }>
-                    {"View more"}
+                    {!viewMore ? "View more" : "View less"}
                 </Button>
             </GridContainer>
         </div>
         <div className={classes.space50} />
       </div>
-      <div
-            xs={12} sm={12} md={12} justify="center"
-            style={{ backgroundColor: "#6231ec", marginTop:'-25px', alignItems:'center', paddingBottom:'50px'}}
-        >
-            <div className={classes.title} justify='center'>
-                <h2 style={{textAlign:'center', color:'white', fontWeight:'bold', paddingTop:'50px'}}>
-                    Follow us for updates
-                </h2>
-            </div>
-            <div className={classes.title} justify='center' style={{marginLeft:'auto', marginRight:'auto', display:'flex'}}>
-                <img className="d-block mx-auto img-fluid w-50" 
-                    style={{marginRight:'auto', marginLeft:'auto', display:'block'}}
-                    src="/img/images/Frame.png" alt="requirements"
-                />
-            </div>
-            <div className={classes.title} justify='center'>
-                <h3 style={{color:'white', textAlign:'center', color: 'white'}}>
-                    @climatescienceolympiad
-                </h3>
-            </div>
-        </div>
     </div>
   );
 }

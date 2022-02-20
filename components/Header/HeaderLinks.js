@@ -54,7 +54,7 @@ export default function HeaderLinks(props) {
         <Button
           href="https://www.creative-tim.com/product/nextjs-material-kit-pro?ref=njsmk-navbar"
           color="transparent"
-          target="_blank"
+          // target="_blank"
           className={classes.linkTitle}
           style={{textTransform: 'capitalize'}}
         >
@@ -63,9 +63,9 @@ export default function HeaderLinks(props) {
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button
-          href="https://www.creative-tim.com/product/nextjs-material-kit-pro?ref=njsmk-navbar"
+          href="/home"
           color="transparent"
-          target="_blank"
+          //target="_blank"
           className={classes.linkTitle}
           style={{textTransform: 'capitalize'}}
         >
@@ -81,9 +81,9 @@ export default function HeaderLinks(props) {
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button
-          href="https://www.creative-tim.com/product/nextjs-material-kit-pro?ref=njsmk-navbar"
+          href="/team"
           color="transparent"
-          target="_blank"
+          // target="_blank"
           className={classes.linkTitle}
           style={{textTransform: 'capitalize'}}
         >
@@ -93,9 +93,9 @@ export default function HeaderLinks(props) {
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button
-          href="https://www.creative-tim.com/product/nextjs-material-kit?ref=njsmk-navbar"
+          href="/winner"
           color="transparent"
-          target="_blank"
+          // target="_blank"
           className={classes.linkTitle}
           style={{textTransform: 'capitalize'}}
         >
