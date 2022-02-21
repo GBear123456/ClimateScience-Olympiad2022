@@ -29,6 +29,10 @@ class ScoreCache {
             cb(err, ret);
         })
     }
+
+    getScoreData() {
+        return this.scores;
+    }
 }
 
 export default (new ScoreCache());

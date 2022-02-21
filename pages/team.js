@@ -14,13 +14,8 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
 import Parallax from "components/Parallax/Parallax.js";
-import FindingSolutionSection from "pages-sections/home-sections/FindingSolution-Section.js";
 
 import styles from "styles/jss/nextjs-material-kit/pages/components.js";
-import RegisterSection from "../pages-sections/home-sections/Register-Section";
-import BlueSection from "../pages-sections/home-sections/BlueSection";
-import CSOTeamSection from "../pages-sections/home-sections/CSOTeamSection";
-import PartnersSection from "../pages-sections/home-sections/PartnersSection";
 import JudgesSection from "../pages-sections/team-sections/JudgesSection";
 import FollowsUpSection from "../pages-sections/FollowsUpSection";
 

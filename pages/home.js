@@ -15,18 +15,6 @@ import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
 import Parallax from "components/Parallax/Parallax.js";
 // sections for this page
-//import SectionBasics from "pages-sections/Components-Sections/SectionBasics.js";
-import SectionNavbars from "pages-sections/Components-Sections/SectionNavbars.js";
-import SectionTabs from "pages-sections/Components-Sections/SectionTabs.js";
-import SectionPills from "pages-sections/Components-Sections/SectionPills.js";
-import SectionNotifications from "pages-sections/Components-Sections/SectionNotifications.js";
-import SectionTypography from "pages-sections/Components-Sections/SectionTypography.js";
-import SectionJavascript from "pages-sections/Components-Sections/SectionJavascript.js";
-import SectionCarousel from "pages-sections/Components-Sections/SectionCarousel.js";
-import SectionCompletedExamples from "pages-sections/Components-Sections/SectionCompletedExamples.js";
-import SectionLogin from "pages-sections/Components-Sections/SectionLogin.js";
-import SectionExamples from "pages-sections/Components-Sections/SectionExamples.js";
-import SectionDownload from "pages-sections/Components-Sections/SectionDownload.js";
 
 import FindingSolutionSection from "pages-sections/home-sections/FindingSolution-Section.js";
 
@@ -39,6 +27,7 @@ import BlueSection from "../pages-sections/home-sections/BlueSection";
 import CSOTeamSection from "../pages-sections/home-sections/CSOTeamSection";
 import PartnersSection from "../pages-sections/home-sections/PartnersSection";
 import FollowsUpSection from "../pages-sections/FollowsUpSection";
+import ScoreCache from "../common/ScoreCache";
 
 const useStyles = makeStyles(styles);
 export default function Components(props) {
@@ -48,7 +37,8 @@ export default function Components(props) {
   const [questions, setQuestions] = useState([]);
 
   useEffect((props) => {
-    console.log("CLASSES=>", props);
+    const scores = ScoreCache.getScoreData();
+    console.log("CLASSES=>", scores);
   }, []);
 
   useEffect(() => {
